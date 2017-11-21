@@ -27,20 +27,23 @@ public class BackgroundMessengerManager implements ServletContextListener {
             threadPool.add(r);
             r.start();
         }
-        FailureMetricsWorkder f = new FailureMetricsWorkder();
-        threadPool.add(f);
-        f.start();
-        ResponseTimeMetricsWorker re = new ResponseTimeMetricsWorker();
-        threadPool.add(re);
-        re.start();
-        QueryTimeMetricsWorker q = new QueryTimeMetricsWorker();
-        threadPool.add(q);
-        q.start();
+
+        for (int j = 0; j < 5; j++) {
+            FailureMetricsWorkder f = new FailureMetricsWorkder();
+            threadPool.add(f);
+            f.start();
+            ResponseTimeMetricsWorker re = new ResponseTimeMetricsWorker();
+            threadPool.add(re);
+            re.start();
+            QueryTimeMetricsWorker q = new QueryTimeMetricsWorker();
+            threadPool.add(q);
+            q.start();
+        }
         System.out.println("messenger threads requesting done...");
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        for (int i = 0; i < THREAD_NUM + SQS_MSG_THREAD_NUM; i++) {
+        for (int i = 0; i < THREAD_NUM + SQS_MSG_THREAD_NUM * 5; i++) {
             threadPool.get(i).setDone();
         }
         ConnectionFactory.closeDatasource();

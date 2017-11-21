@@ -22,8 +22,8 @@ import java.util.Locale;
 public class SQSMesengerProcessor extends MetricsWorker{
 
 
-    private static String aws_access_key_id = "AKIAJBUVNVYNCUQOY2DA";
-    private static String aws_secret_access_key = "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";
+    private static String aws_access_key_id = "";
+    private static String aws_secret_access_key = "";
     private final String queueUrl =
             "https://sqs.us-west-2.amazonaws.com/761353588507/cs6650-server-performace-queue";
     private AmazonSQS sqsClient;

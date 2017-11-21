@@ -24,8 +24,8 @@ public class PerformanceMetricsClient {
   public static void main(String[] argv) throws Exception {
     // Please, do not remove this line from file template, here invocation of web service will be inserted
     System.out.println("Total: ");
-    getStatsForResponseTimes("total");
-    getStatsForQueryTimes("total");
+    getStatsForResponseTimes("ip-172-31-3-227");
+    getStatsForQueryTimes("ip-172-31-3-227");
   }
 
   private static void getStatsForResponseTimes(String hostname) throws Exception{
